@@ -1,0 +1,46 @@
+consul:
+  hostname: consul
+  build: ./consul
+  dns:
+    - '127.0.0.1'
+    - '8.8.8.8'
+  ports:
+    - '10053:53/tcp'
+    - '10053:53/udp'
+    - '8500:8500'
+vault-1:
+  hostname: vault-1
+  build: ./vault
+  environment:
+    VAULT_REDIRECT_ADDR: https://vault.service.consul:8200
+  ports:
+    - '8200:8200'
+  dns:
+    - '127.0.0.1'
+    - '8.8.8.8'
+  links:
+    - consul
+    - mysql
+vault-2:
+  hostname: vault-2
+  build: ./vault
+  environment:
+    VAULT_REDIRECT_ADDR: https://vault.service.consul:8200
+  ports:
+    - '8201:8200'
+  dns:
+    - '127.0.0.1'
+    - '8.8.8.8'
+  links:
+    - consul
+    - mysql
+mysql:
+  hostname: mysql
+  image: mysql:5.7
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: app
+    MYSQL_USER: vault
+    MYSQL_PASSWORD: secret
+  ports:
+    - '13306:3306'
