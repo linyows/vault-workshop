@@ -1,7 +1,16 @@
 doctype html
 html
   head
-    title= title
+    title= title + " - Vault Workshop/Express App"
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    header
+      h1
+        a(href="/") Vault Workshop /
+          span Express App
+      p= title
+    div(class="content")
+      block content
+    footer
+      p
+        a(href="https://github.com/linyows/vault-workshop") &copy; linyows

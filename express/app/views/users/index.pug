@@ -1,11 +1,13 @@
 extends ../layout
 
 block content
-  h1= title
-
+  div(class="new-user")
+    a(href="/users/new" class="new link-btn") new
   ul
     each user in users
       li
         = user.username
-        | a(href="/users/" + user.id) show
-        | a(href="/users/" + user.id + "/destroy") delete
+        span(class="show link-btn")
+          a(href="/users/" + user.id) show
+        span(class="delete link-btn")
+          a(href="/users/" + user.id + "/destroy") delete

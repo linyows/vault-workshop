@@ -1,13 +1,14 @@
 extends ../layout
 
 block content
-  h1= title
-
-  div
-    dl
-      dt Username
-      dd= user.username
-      dt Email
-      dd= user.email
-      dt Encrypted Email
-      dd= user.emailEncrypted
+  dl
+    dt ID
+    dd= user.id
+    dt Username
+    dd= user.username
+    dt Email
+    dd= user.email
+    dt Encrypted Email
+    dd= user.email_encrypted
+  div(class="user-list")
+    a(href="/users" class="list link-btn") back

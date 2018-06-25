@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const db = require('../models/index');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  db.user.findAll().then((users) => {
+    res.render('users/index', {
+      title: 'Welcome to Hashicorp Vault Workshop.',
+      users: users
+    });
+  });
 });
 
 module.exports = router;

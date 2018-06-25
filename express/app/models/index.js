@@ -2,10 +2,16 @@
 
 const Sequelize = require('sequelize');
 const SequelizeVault = require('sequelize-vault');
+const fs = require('fs');
 
 // sequelize-vault
 SequelizeVault.Vault.app = 'express';
-SequelizeVault.Vault.address = process.env.VAULT_ADDR;
+const token = fs.readFileSync('/vault-token', 'utf-8').trim();
+if (token !== '') {
+  SequelizeVault.Vault.enabled = true;
+  SequelizeVault.Vault.token = token;
+  SequelizeVault.Vault.address = process.env.VAULT_ADDR;
+}
 
 // sequelize
 const sequelize = new Sequelize({
@@ -23,14 +29,14 @@ const schema = {
     primaryKey: true,
     autoIncrement: true,
   },
-  name: Sequelize.STRING,
+  username: Sequelize.STRING,
   email_encrypted: Sequelize.STRING,
   created_at: Sequelize.DATE,
   updated_at: Sequelize.DATE,
 };
 
 const User = sequelize.define('user', {
-  name: Sequelize.STRING,
+  username: Sequelize.STRING,
   email_encrypted: Sequelize.STRING,
   email: Sequelize.VIRTUAL,
 }, {
