@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+
+  div
+    dl
+      dt Username
+      dd= user.username
+      dt Email
+      dd= user.email
+      dt Encrypted Email
+      dd= user.emailEncrypted

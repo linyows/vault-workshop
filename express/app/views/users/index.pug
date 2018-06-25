@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each user in users
+      li
+        = user.username
+        | a(href="/users/" + user.id) show
+        | a(href="/users/" + user.id + "/destroy") delete
