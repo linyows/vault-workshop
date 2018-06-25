@@ -44,3 +44,13 @@ mysql:
     MYSQL_PASSWORD: secret
   ports:
     - '13306:3306'
+express:
+  hostname: express
+  build: ./express
+  environment:
+    VAULT_ADDR: https://vault.service.consul:8200
+  ports:
+    - '3000:3000'
+  links:
+    - vault-1
+    - vault-2
