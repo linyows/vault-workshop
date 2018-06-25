@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.7
 MAINTAINER linyows <linyows@gmail.com>
 
 ENV CONSUL_VERSION 1.1.0

@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.7
 MAINTAINER linyows <linyows@gmail.com>
 
 COPY entry.sh /entry.sh
