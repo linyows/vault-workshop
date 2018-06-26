@@ -17,6 +17,7 @@ RUN curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${C
     chmod +x /bin/consul && \
     rm /tmp/consul.zip /tmp/consul.sha256
 
+COPY consul.d /etc/consul.d
 COPY supervisor.d /etc/supervisor.d
 COPY supervisord.conf /etc/supervisord.conf
 
