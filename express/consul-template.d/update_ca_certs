@@ -1,0 +1,4 @@
+#!/bin/sh
+
+grep -i vault /etc/ca-certificates.conf || echo 'extra/Vault_Root_CA.crt' >> /etc/ca-certificates.conf
+/usr/sbin/update-ca-certificates
