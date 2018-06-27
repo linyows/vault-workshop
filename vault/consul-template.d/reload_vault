@@ -1,4 +1,4 @@
 #!/bin/sh
 
-MAINPID=$(ps -ef --no-headers | grep "vault" | awk '{ print $2 }')
-/bin/kill -HUP $MAINPID
+PID=$(ps a | grep [v]ault | awk '{print $1}')
+/bin/kill -HUP $PID
