@@ -20,17 +20,16 @@ vault:
     - '8.8.8.8'
   links:
     - consul
-    - mysql
 mysql:
   hostname: mysql
   build: ./mysql
   environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: app
-    MYSQL_USER: vault
-    MYSQL_PASSWORD: secret
+    MYSQL_DATABASE: express
   ports:
     - '13306:3306'
+  dns:
+    - '127.0.0.1'
+    - '8.8.8.8'
   links:
     - consul
 express:
@@ -40,7 +39,8 @@ express:
     VAULT_ADDR: https://vault.service.consul:8200
   ports:
     - '3000:3000'
+  dns:
+    - '127.0.0.1'
+    - '8.8.8.8'
   links:
     - consul
-    - vault
-    - mysql
