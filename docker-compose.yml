@@ -36,7 +36,10 @@ express:
   hostname: express
   build: ./express
   environment:
+    VAULT_TOKEN: $VAULT_TOKEN
     VAULT_ADDR: https://vault.service.consul:8200
+    DB_HOST: mysql.node.consul
+    DB_PORT: '3306'
   ports:
     - '3000:3000'
   dns:
