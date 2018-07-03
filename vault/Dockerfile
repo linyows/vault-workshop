@@ -4,7 +4,7 @@ ENV VAULT_VERSION 0.10.3
 ENV VAULT_SHA256 ffec1c201f819f47581f54c08653a8d17ec0a6699854ebd7f6625babb9e290ed
 ENV VAULT_ADDR https://127.0.0.1:8200
 ENV VAULT_SKIP_VERIFY true
-ENV COMMON_NAME *.service.consul
+ENV COMMON_NAME vault.service.consul
 
 RUN curl -sSL https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
     -o /tmp/vault.zip && \
@@ -23,6 +23,7 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY vault.d /etc/vault.d
 COPY vault.conf /etc/vault.conf
 
+RUN chmod +x /etc/consul-template.d/*
 RUN cd /etc/vault.d && \
     openssl req -x509 -days 1 -newkey rsa:2048 -nodes \
     -out tls.crt -keyout tls.key -subj "/C=/ST=/L=/O=/OU=/CN=$COMMON_NAME"

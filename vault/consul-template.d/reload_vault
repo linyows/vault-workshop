@@ -1,4 +1,3 @@
 #!/bin/sh
 
-PID=$(ps a | grep [v]ault | awk '{print $1}')
-/bin/kill -HUP $PID
+/bin/kill -HUP $(supervisorctl pid vault)
