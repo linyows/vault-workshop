@@ -2,10 +2,10 @@
 
 mysql_install_db --user=root
 
-MYSQL_ROOT_DATABASE=${MYSQL_ROOT_DATABASE:-"secret"}
+MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-"secret"}
 MYSQL_DATABASE=${MYSQL_DATABASE:-""}
 MYSQL_USER=${MYSQL_USER:-""}
-MYSQL_PASSWORD=${MYSQL_PASSWORD:-""}
+MYSQL_PASSWORD=${MYSQL_PASSWORD:-"secret"}
 
 if [ ! -d "/run/mysqld" ]; then
   mkdir -p /run/mysqld
