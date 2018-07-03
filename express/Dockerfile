@@ -9,6 +9,9 @@ COPY consul-template.conf /etc/consul-template.conf
 COPY supervisor.d /etc/supervisor.d
 COPY supervisord.conf /etc/supervisord.conf
 
+COPY ca.crt /usr/share/ca-certificates/extra/Vault_Root_CA.crt
+RUN chmod +x /etc/consul-template.d/update_ca_certs && /etc/consul-template.d/update_ca_certs
+
 WORKDIR /app
 RUN npm install
 
