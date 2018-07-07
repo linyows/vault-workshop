@@ -3,10 +3,8 @@ FROM linyows/consul:1.2-node
 RUN apk --no-cache add sqlite-dev git
 RUN git clone --depth 1 https://github.com/linyows/sequelize-vault-app app
 
-COPY consul.d /etc/consul.d
-COPY consul-template.d /etc/consul-template.d
 COPY consul-template.conf /etc/consul-template.conf
-COPY supervisor.d /etc/supervisor.d
+COPY supervisor.d/express.ini /etc/supervisor.d/express.ini
 COPY supervisord.conf /etc/supervisord.conf
 
 #COPY ca.crt /usr/share/ca-certificates/extra/Vault_Root_CA.crt
