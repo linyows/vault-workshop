@@ -15,17 +15,14 @@ RUN curl -sSL https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAUL
     chmod +x /bin/vault && \
     rm /tmp/vault.zip /tmp/vault.sha256
 
-COPY consul.d /etc/consul.d
-COPY consul-template.d /etc/consul-template.d
+COPY consul-template.d/reload_vault /etc/consul-template.d/reload_vault
 COPY consul-template.conf /etc/consul-template.conf
-COPY supervisor.d /etc/supervisor.d
-COPY supervisord.conf /etc/supervisord.conf
+COPY supervisor.d/vault.ini /etc/supervisor.d/vault.ini
 COPY vault.d /etc/vault.d
 COPY vault.conf /etc/vault.conf
 
 RUN chmod +x /etc/consul-template.d/*
-RUN cd /etc/vault.d && \
-    openssl req -x509 -days 1 -newkey rsa:2048 -nodes \
-    -out tls.crt -keyout tls.key -subj "/C=/ST=/L=/O=/OU=/CN=$COMMON_NAME"
+RUN openssl req -x509 -days 30 -newkey rsa:2048 -nodes \
+    -out /etc/vault.d/tls.crt -keyout /etc/vault.d/tls.key -subj "/C=/ST=/L=/O=/OU=/CN=$COMMON_NAME"
 
 EXPOSE 8125 8200 8301 8301/udp
