@@ -338,3 +338,7 @@ Author
 
 - [linyows](https://github.com/linyows)
 
+Thanks
+--
+
+Thank you [HashiCorp](https://www.hashicorp.com/) for great software including Vault and Consul.
