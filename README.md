@@ -10,6 +10,13 @@ Requirement
 - docker-compose >= 1.22.0
 - homebrew >= 1.7.3
 
+Architecture
+--
+
+In this workshop, we will build the following system.
+
+![architecture](system-architecture.png)
+
 Setup
 --
 
