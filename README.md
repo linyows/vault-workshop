@@ -332,3 +332,9 @@ Audit Log
 ```sh
 $ docker exec -it vault-workshop_vault_1 less /var/log/vault_audit.log
 ```
+
+Author
+--
+
+- [linyows](https://github.com/linyows)
+
