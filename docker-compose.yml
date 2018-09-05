@@ -13,7 +13,7 @@ vault:
   environment:
     VAULT_REDIRECT_ADDR: https://vault.service.consul:8200
   ports:
-    - '8200:8200'
+    - '8200-8201:8200'
   dns:
     - '127.0.0.1'
     - '8.8.8.8'
