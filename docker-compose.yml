@@ -9,7 +9,6 @@ consul:
     - '10053:53/udp'
     - '8500:8500'
 vault:
-  hostname: vault
   build: ./vault
   environment:
     VAULT_REDIRECT_ADDR: https://vault.service.consul:8200
