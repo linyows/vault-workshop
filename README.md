@@ -8,6 +8,7 @@ Requirement
 
 - docker >= 18.06.0-ce
 - docker-compose >= 1.22.0
+- homebrew >= 1.7.3
 
 Setup
 --
