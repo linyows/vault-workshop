@@ -3,8 +3,6 @@ Vault Workshop
 
 This repository for Hashicorp Vault Workshop.
 
-docker-compose not using workshop [here](https://gist.github.com/linyows/64be55af49031b995c3de9161c9c6713).
-
 Requirement
 --
 
